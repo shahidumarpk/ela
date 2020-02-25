@@ -1,0 +1,70 @@
+{
+    "name": "Contentify/Contentify",
+    "description": "Contentify is an esports CMS based on the popular Laravel 5 framework.",
+    "keywords": ["cms", "contentify", "gaming", "esports", "website"],
+    "homepage": "http://www.contentify.org",
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "5.4.*",
+        "cartalyst/sentinel": "2.*",
+        "thujohn/rss": "1.*",
+        "intervention/image": "dev-master",
+        "chriskonnertz/open-graph": "dev-master",
+        "chriskonnertz/bbcode": "dev-master",
+        "chriskonnertz/jobs": "3.*",
+        "watson/validating": "3.*",
+        "caffeinated/modules": "4.*",
+        "invisnik/laravel-steam-auth": "3.*",
+        "oyejorge/less.php": "1.*",
+        "ext-json": "*",
+        "ext-ctype": "*",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Contentify\\": "contentify"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
